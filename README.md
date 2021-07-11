@@ -1,39 +1,65 @@
-# CsvFormatter
+# Goal
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/csv_formatter`. To experiment with that code, run `bin/console` for an interactive prompt.
+Write a Ruby program that transforms raw data into a standardized format. The objective is to provide a valid .csv which allows the highest number of valid patient records
+to be imported by the next stage of the process (not seen here). Some of the data will be invalid so there will be 2 output
+files from your program, one of which will be the .csv and the other a report.txt file.
 
-TODO: Delete this and the text above, and describe your gem
+## Expectations
 
-## Installation
+Try to time-box the exercise at around ~ 3 hours.
+Keep this constraint in mind as you work, it's very possible that certain items don't get finished, try
+to save a few minutes to summarize your efforts in a readme or email if this is the case.
 
-Add this line to your application's Gemfile:
+## Requirements
 
-```ruby
-gem 'csv_formatter'
-```
+- Parse the provided .csv containing patient information
+- Clean / coerce data elements according to transform rules
+- Provide instructions on how to run your program
+- Your program should process and produce a .csv file (output.csv)
+- Your program should ALSO produce a report file (report.txt) that summarizes the processing outcome (be creative in its contents)
+- Use a recent stable version of Ruby MRI
+- Limit libraries used in your implementation to ONLY [standard library](http://www.ruby-doc.org/stdlib/)
+- Leverage Git, and demonstrate your workflow / style via commits
+- Ensure there are tests included:
+  - [RSpec](https://github.com/rspec/rspec)
+  - [test-unit](https://github.com/test-unit/test-unit)
+  - [minitest](https://github.com/seattlerb/minitest)
+- Email your solution as a public Github repository link OR a .zip package to engineeringjobs@cirrusmd.com, include 'Software Engineer Take-Home' in the subject.
 
-And then execute:
+### Transform Rules
 
-    $ bundle install
+- Trim extra white space for all fields
+- Transform phone_numbers to E.164 format (All Numbers should be US e.g. +1)
+- Transform ALL dates to ISO8601 format (YYYY-MM-DD)
 
-Or install it yourself as:
+### Validation Rules
 
-    $ gem install csv_formatter
+- Phone Numbers must be E.164 compliant (country code + 10 numeric digits)
+- first_name, last_name, dob, member_id, effective_date are ALL required for each patient
 
-## Usage
+## Evaluation
 
-TODO: Write usage instructions here
+The qualities we're looking for are:
 
-## Development
+- **Clarity**: is the code organized and structured well, is it easy to read and comprehend?
+- **Maintainability**: if it had to be updated / extended how easy would that be?
+- **Testability**: are the tests comprehensive and covering the appropriate use cases?
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+## Input
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+Please use the provided data file as the input for your solution.
 
-## Contributing
+- input.csv
+  - Delimiter: `,`
+  - Fields: `last_name`, `first_name`, `dob`, `member_id`, `effective_date`, `expiry_date`, `phone_number`
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/csv_formatter.
+## Output
 
-## License
+1. Running your script should produce a cleaned .csv (output.csv)
+2. Running your program should also produce a summary report (report.txt)
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+## Questions
+
+If you have questions about the instructions, please ask. We want you to be successful. If you have a question about how
+to handle something that wasn't specifically addressed, make a decision and feel free to call it out in your
+readme or email with your reasoning behind your decision. No right or wrong answers for these types of things.
