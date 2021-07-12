@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "csv_formatter"
+require "csv_formatter/patient"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
